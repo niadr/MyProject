@@ -34,6 +34,14 @@ Stock::Stock(const char*       symbol,
 			_weightedStockPrice(0.0)
 			{}
 
+
+Stock* Stock::clone() const
+{
+	Stock* newStock = new Stock();
+	copyData(newStock);
+	return newStock;
+}
+
 double Stock::computeDividendYield(int price)
 {
 	if (price > 0 && _lastDividend >= 0) {
@@ -112,6 +120,14 @@ PreferredStock::PreferredStock(const char*    symbol,
 								Stock         (symbol, lastDividend, parValue),
 								_fixedDividend(fixedDividend)
 								{}
+
+
+Stock* PreferredStock::clone() const
+{
+	Stock* newStock = new PreferredStock();
+	copyData(newStock);
+	return newStock;
+}
 		
 double PreferredStock::computeDividendYield(int price)
 {

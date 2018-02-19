@@ -50,14 +50,8 @@ bool StockMarket::addStock(const Stock* stock)
 		if (!symbol.empty() && 
 			_stocks.find(symbol) == _stocks.end()) {
 			// Take ownership of stock memory
-			Stock* newStock = NULL;
-			if (dynamic_cast<const PreferredStock*>(stock)) {
-				newStock = new PreferredStock();
-			} else {
-				newStock = new Stock();
-			}
+			Stock* newStock = stock->clone();
 			if (newStock) {
-				stock->copyData(newStock);
 				_stocks[symbol] = newStock;
 				result = true;
 			}

@@ -20,12 +20,12 @@ int main(int argc, char** argv) {
 	test.addStockData        (london);
 	london.computeStockValues();
 	london.printInfo         ();
-
+	test.check               (london);
 	cout << endl << endl;
 
 	// Test other stock market with empty values
 	// Should not crash!
-	frankfurt.computeStockValues();  // should not crash!	
+	frankfurt.computeStockValues();	
 	frankfurt.printInfo         ();
 	
 	return 0;

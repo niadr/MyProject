@@ -28,6 +28,9 @@ class Stock
 			  int                parValue);
 		virtual ~Stock() {}
 		
+		//! Funtion implementing a 'virtual constructor' for 'Stock' class hierarchy
+		virtual Stock* clone() const;
+		
 		//! Accessing
 		std::string const& symbol     () const { return _symbol;            }
 		int         lastDividend      () const { return _lastDividend;      }
@@ -87,6 +90,8 @@ class PreferredStock: public Stock
 					   int         parValue,
 					   int         fixedDividend);
 		~PreferredStock() {}
+		
+		Stock* clone() const;
 		
 			//! Accessing
 		int fixedDividend() { return _fixedDividend; }
